@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server sent events</title>
+  </head>
+  <body>
+    <h1>Event Sourcing</h1>
+    <p>Response:</p>
+    <script>
+      const serverEvents = new EventSource("http://localhost:8081/events");
+      const text = document.querySelector("p");
+
+      serverEvents.onmessage = (event) => {
+        text.textContent += " " + event.data;
+      };
+    </script>
+  </body>
+</html>
