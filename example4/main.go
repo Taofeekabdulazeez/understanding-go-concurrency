@@ -14,14 +14,7 @@ type APIResponse struct {
 func main() {
 	client := &http.Client{}
 
-	api_url := "https://anagram-solver.onrender.com/master"
-
-	req, err := http.NewRequest(http.MethodGet, api_url, nil)
-	if err != nil {
-		panic(err)
-	}
-
-	resp, err := client.Do(req)
+	resp, err := client.Get("https://anagram-solver.onrender.com/master")
 	if err != nil {
 		panic(err)
 	}
@@ -34,5 +27,5 @@ func main() {
 		panic(err)
 	}
 
-	println("Data:", data)
+	println("Data:", data.Results)
 }
